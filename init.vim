@@ -70,9 +70,27 @@ color dracula
 "Mappings
 map <C-n> :NERDTreeToggle<CR>
 map <C-i> :TSImport<CR>
+map <Co> :NERDTreeToggle %<CR>
 map <Leader> <Plug>(easymotion-prefix)
 nmap <F8> :TagbarToggle<CR>
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+
+nnoremap <C-k> :tabprevious<CR>
+nnoremap <C-l>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-w>   <Esc>:tabclose<CR>
+
+nnoremap <A-F1> 1gt
+nnoremap <A-F2> 2gt
+nnoremap <A-F3> 3gt
+nnoremap <A-F4> 4gt
+nnoremap <A-F5> 5gt
+nnoremap <A-F6> 6gt
+nnoremap <A-F7> 7gt
+nnoremap <A-F8> 8gt
+nnoremap <A-F9> 9gt
+nnoremap <A-F10> 10gt 
+
