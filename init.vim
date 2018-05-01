@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'leafgarland/typescript-vim'
   Plug 'kien/ctrlp.vim'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'dracula/vim', { 'as': 'dracula'  }
+  Plug 'joshdick/onedark.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'w0rp/ale'
   Plug 'airblade/vim-gitgutter'
@@ -22,6 +22,15 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdcommenter'
   Plug 'rking/ag.vim'
 call plug#end()
+
+if (empty($TMUX))
+  if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+    if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 
 let g:tagbar_type_typescript = {                                                  
   \ 'ctagsbin' : 'tstags',                                                        
@@ -52,6 +61,7 @@ let NERDTreeDirArrows = 1
 let g:mapleader=','
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 filetype plugin on
 
@@ -66,8 +76,10 @@ set tabstop=2
 set nobackup
 set noswapfile
 set omnifunc=syntaxcomplete#Complete
+
 syntax on
-color dracula
+colorscheme onedark
+let g:airline_theme='onedark'
 
 "Mappings
 map <C-n> :NERDTreeToggle<CR>
@@ -96,3 +108,12 @@ nnoremap <A-F8> 8gt
 nnoremap <A-F9> 9gt
 nnoremap <A-F10> 10gt 
 
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+
+map <silent> <A-<> <C-w><
+map <silent> <A--> <C-W>-
+map <silent> <A-+> <C-W>+
+map <silent> <A->> <C-w>>
+
+nnoremap <esc> :noh<return><esc>
