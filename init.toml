@@ -51,3 +51,15 @@ default_height = 30
 
 [[layers]]
   name = "denite"
+
+[[layers]]
+  name = "VersionControl"
+
+[[layers]]
+  name = "git"
+
+[[layers]]
+  name = "lang#html"
+
+[[layers]]
+  name = "lsp"
