@@ -50,12 +50,12 @@ colorscheme gruvbox
 map <Leader> <Plug>(easymotion-prefix)
 
 "Fzf search
-"nnoremap <C-p> :Files<CR>
 silent! nmap <C-P> :GFiles<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>h :History<CR>
 nnoremap <Leader>t :BTags<CR>
 nnoremap <Leader>T :Tags<CR>
+nmap <Leader>F :Ag<Space>
 
 "NERDTree
 autocmd StdinReadPre * let s:std_in=1
