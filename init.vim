@@ -1,69 +1,26 @@
-call plug#begin('~/.vim/plugged')
-	Plug 'Yggdroot/indentLine'
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	Plug 'mhartington/nvim-typescript'
-	Plug 'scrooloose/nerdtree'
-	Plug 'leafgarland/typescript-vim'
-  Plug 'kien/ctrlp.vim'
-  Plug 'jiangmiao/auto-pairs'
-  Plug 'joshdick/onedark.vim'
-  Plug 'tpope/vim-fugitive'
-  Plug 'w0rp/ale'
-  Plug 'airblade/vim-gitgutter'
+call plug#begin('~/.local/share/nvim/plugged')
+  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+	Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'morhetz/gruvbox'
   Plug 'easymotion/vim-easymotion'
-  Plug 'ap/vim-css-color'
-  Plug 'vim-airline/vim-airline'
-  Plug 'majutsushi/tagbar'
-  Plug 'Perlence/tstags'
-  Plug 'universal-ctags/ctags'
-  Plug 'digitaltoad/vim-pug'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'jistr/vim-nerdtree-tabs'
+  Plug 'vim-airline/vim-airline'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'vim-syntastic/syntastic' 
+  Plug 'Yggdroot/indentLine'
+  Plug 'tpope/vim-fugitive'
   Plug 'scrooloose/nerdcommenter'
-  Plug 'rking/ag.vim'
+  Plug 'OmniSharp/Omnisharp-vim'
+  Plug 'tpope/vim-dispatch'
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'mattn/emmet-vim'
 call plug#end()
-
-if (empty($TMUX))
-  if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-    if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
-
-let g:tagbar_type_typescript = {                                                  
-  \ 'ctagsbin' : 'tstags',                                                        
-  \ 'ctagsargs' : '-f-',                                                           
-  \ 'kinds': [                                                                     
-  \ 'e:enums:0:1',                                                               
-  \ 'f:function:0:1',                                                            
-  \ 't:typealias:0:1',                                                           
-  \ 'M:Module:0:1',                                                              
-  \ 'I:import:0:1',                                                              
-  \ 'i:interface:0:1',                                                           
-  \ 'C:class:0:1',                                                               
-  \ 'm:method:0:1',                                                              
-  \ 'p:property:0:1',                                                            
-  \ 'v:variable:0:1',                                                            
-  \ 'c:const:0:1',                                                              
-\ ],                                                                            
-\ 'sort' : 0                                                                    
-\ }                                
-
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
-nnoremap <silent> <Leader>v :NERDTreeFind<CR>
-
-let g:nerdtree_tabs_open_on_console_startup=1
-let g:deoplete#enable_at_startup = 1
-let g:typescript_indent_disable = 1
-let NERDTreeDirArrows = 1
-let g:mapleader=','
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
-filetype plugin on
 
 set cursorline
 set number
@@ -75,45 +32,119 @@ set shiftwidth=2
 set tabstop=2
 set nobackup
 set noswapfile
-set omnifunc=syntaxcomplete#Complete
+set incsearch
+set hlsearch
+set encoding=UTF-8
+
+filetype plugin on
+
+let loaded_matchparen = 1
 
 syntax on
-colorscheme onedark
-let g:airline_theme='onedark'
 
-"Mappings
-map <C-n> :NERDTreeToggle<CR>
-map <C-i> :TSImport<CR>
-map <Co> :NERDTreeToggle %<CR>
+"Theme
+set termguicolors
+colorscheme gruvbox
+
+"Easymotion config
 map <Leader> <Plug>(easymotion-prefix)
-nmap <F8> :TagbarToggle<CR>
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
+"Fzf search
+"nnoremap <C-p> :Files<CR>
+silent! nmap <C-P> :GFiles<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>h :History<CR>
+nnoremap <Leader>t :BTags<CR>
+nnoremap <Leader>T :Tags<CR>
 
-nnoremap <C-k> :tabprevious<CR>
-nnoremap <C-l>   :tabnext<CR>
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-S-w>   <Esc>:tabclose<CR>
+"NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+map <C-n> :NERDTreeToggle<CR>
+nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 
-nnoremap <A-F1> 1gt
-nnoremap <A-F2> 2gt
-nnoremap <A-F3> 3gt
-nnoremap <A-F4> 4gt
-nnoremap <A-F5> 5gt
-nnoremap <A-F6> 6gt
-nnoremap <A-F7> 7gt
-nnoremap <A-F8> 8gt
-nnoremap <A-F9> 9gt
-nnoremap <A-F10> 10gt 
+"Vim Gitgutter
+set signcolumn=yes
 
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
+" Vim tabs navigation
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>
 
-map <silent> <A-<> <C-w><
-map <silent> <A--> <C-W>-
-map <silent> <A-+> <C-W>+
-map <silent> <A->> <C-w>>
+"Vim Coc
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-nnoremap <esc> :noh<return><esc>
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+let g:airline#extensions#tabline#enabled = 1
+
+"Omnisharp-vim
+let g:OmniSharp_server_stdio = 1
+
+"NerdCommenter
+
