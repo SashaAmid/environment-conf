@@ -18,7 +18,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'OmniSharp/Omnisharp-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-  Plug 'terryma/vim-multiple-cursors'
+  "Plug 'terryma/vim-multiple-cursors'
   Plug 'mattn/emmet-vim'
 call plug#end()
 
@@ -58,10 +58,14 @@ nnoremap <Leader>T :Tags<CR>
 nmap <Leader>F :Ag<Space>
 
 "NERDTree
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeAutoDeleteBuffer = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 map <C-n> :NERDTreeToggle<CR>
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
+nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 
 "Vim Gitgutter
 set signcolumn=yes
