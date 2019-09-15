@@ -18,6 +18,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'OmniSharp/Omnisharp-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  Plug 'yuttie/comfortable-motion.vim'
   "Plug 'terryma/vim-multiple-cursors'
   Plug 'mattn/emmet-vim'
 call plug#end()
