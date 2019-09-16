@@ -14,13 +14,16 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'vim-syntastic/syntastic' 
   Plug 'Yggdroot/indentLine'
   Plug 'tpope/vim-fugitive'
-  Plug 'scrooloose/nerdcommenter'
   Plug 'OmniSharp/Omnisharp-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'yuttie/comfortable-motion.vim'
+  Plug 'scrooloose/nerdcommenter'
   "Plug 'terryma/vim-multiple-cursors'
   Plug 'mattn/emmet-vim'
+  Plug 'majutsushi/tagbar'
+  Plug 'mhinz/vim-startify'
+  Plug 'mhinz/vim-signify'
 call plug#end()
 
 set cursorline
@@ -71,10 +74,12 @@ nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 "Vim Gitgutter
 set signcolumn=yes
 
-" Vim tabs navigation
+" Vim navigation, buffers
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
+"Close all others buffers
+nnoremap <leader>co :w <bar> %bd <bar> e# <bar> bd# <CR>
 
 "Vim Coc
 set hidden
@@ -151,5 +156,33 @@ let g:airline#extensions#tabline#enabled = 1
 "Omnisharp-vim
 let g:OmniSharp_server_stdio = 1
 
-"NerdCommenter
+"NerdComment
 
+"Majutsushi tagBar
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_type_typescript = {                                                  
+  \ 'ctagsbin' : 'tstags',                                                        
+  \ 'ctagsargs' : '-f-',                                                           
+  \ 'kinds': [                                                                     
+    \ 'e:enums:0:1',                                                               
+    \ 'f:function:0:1',                                                            
+    \ 't:typealias:0:1',                                                           
+    \ 'M:Module:0:1',                                                              
+    \ 'I:import:0:1',                                                              
+    \ 'i:interface:0:1',                                                           
+    \ 'C:class:0:1',                                                               
+    \ 'm:method:0:1',                                                              
+    \ 'p:property:0:1',                                                            
+    \ 'v:variable:0:1',                                                            
+    \ 'c:const:0:1',                                                              
+  \ ],                                                                            
+  \ 'sort' : 0                                                                    
+\ }             
+let g:tagbar_type_css = {
+\ 'ctagstype' : 'Css',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 's:selectors',
+        \ 'i:identities'
+    \ ]
+    \ }
