@@ -39,6 +39,7 @@ set noswapfile
 set incsearch
 set hlsearch
 set encoding=UTF-8
+set mouse=n
 
 filetype plugin on
 
@@ -178,11 +179,3 @@ let g:tagbar_type_typescript = {
   \ ],                                                                            
   \ 'sort' : 0                                                                    
 \ }             
-let g:tagbar_type_css = {
-\ 'ctagstype' : 'Css',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-    \ ]
-    \ }
