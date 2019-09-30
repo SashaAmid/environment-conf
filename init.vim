@@ -1,7 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 	Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'morhetz/gruvbox'
   Plug 'easymotion/vim-easymotion'
   Plug 'jiangmiao/auto-pairs'
   Plug 'sheerun/vim-polyglot'
@@ -24,6 +23,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'majutsushi/tagbar'
   Plug 'mhinz/vim-startify'
   Plug 'mhinz/vim-signify'
+  Plug 'sonph/onehalf', {'rtp': 'vim/'}
 call plug#end()
 
 set cursorline
@@ -40,6 +40,7 @@ set incsearch
 set hlsearch
 set encoding=UTF-8
 set mouse=n
+set bg=light
 
 filetype plugin on
 
@@ -48,8 +49,9 @@ let loaded_matchparen = 1
 syntax on
 
 "Theme
-set termguicolors
-colorscheme gruvbox
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
+set t_Co=256
 
 "Easymotion config
 map <Leader> <Plug>(easymotion-prefix)
@@ -179,4 +181,3 @@ let g:tagbar_type_typescript = {
   \ ],                                                                            
   \ 'sort' : 0                                                                    
 \ }             
-
