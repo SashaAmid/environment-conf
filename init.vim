@@ -10,7 +10,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ryanoasis/vim-devicons'
   Plug 'vim-airline/vim-airline'
   Plug 'airblade/vim-gitgutter'
-  Plug 'vim-syntastic/syntastic' 
+	Plug 'vim-syntastic/syntastic' 
   Plug 'Yggdroot/indentLine'
   Plug 'tpope/vim-fugitive'
   Plug 'OmniSharp/Omnisharp-vim'
@@ -181,3 +181,18 @@ let g:tagbar_type_typescript = {
   \ ],                                                                            
   \ 'sort' : 0                                                                    
 \ }             
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"let g:syntastic_typescript_tslint_args = "--fix"
+
+let g:syntastic_typescript_checkers = ['tslint']
+let g:syntastic_javascript_checkers = ['eslint']
