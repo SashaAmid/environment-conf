@@ -23,7 +23,8 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'majutsushi/tagbar'
   Plug 'mhinz/vim-startify'
   Plug 'mhinz/vim-signify'
-  Plug 'sonph/onehalf', {'rtp': 'vim/'}
+  Plug 'morhetz/gruvbox'
+  Plug 'tpope/vim-surround'
 call plug#end()
 
 set cursorline
@@ -40,7 +41,6 @@ set incsearch
 set hlsearch
 set encoding=UTF-8
 set mouse=n
-set bg=light
 
 filetype plugin on
 
@@ -49,9 +49,8 @@ let loaded_matchparen = 1
 syntax on
 
 "Theme
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
-set t_Co=256
+colorscheme gruvbox
+set bg=dark
 
 "Easymotion config
 map <Leader> <Plug>(easymotion-prefix)
