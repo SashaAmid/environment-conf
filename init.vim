@@ -10,10 +10,9 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'ryanoasis/vim-devicons'
   Plug 'vim-airline/vim-airline'
   Plug 'airblade/vim-gitgutter'
-	Plug 'vim-syntastic/syntastic' 
+  Plug 'vim-syntastic/syntastic' 
   Plug 'Yggdroot/indentLine'
   Plug 'tpope/vim-fugitive'
-  Plug 'OmniSharp/Omnisharp-vim'
   Plug 'tpope/vim-dispatch'
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'yuttie/comfortable-motion.vim'
@@ -41,6 +40,9 @@ set incsearch
 set hlsearch
 set encoding=UTF-8
 set mouse=n
+set showmatch
+set ignorecase
+set smartcase
 
 filetype plugin on
 
@@ -83,6 +85,7 @@ set signcolumn=yes
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
+
 "Close all others buffers
 nnoremap <leader>co :w <bar> %bd <bar> e# <bar> bd# <CR>
 
@@ -157,9 +160,6 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 let g:airline#extensions#tabline#enabled = 1
-
-"Omnisharp-vim
-let g:OmniSharp_server_stdio = 1
 
 "NerdComment
 
