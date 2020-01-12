@@ -19,7 +19,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'scrooloose/nerdcommenter'
   "Plug 'terryma/vim-multiple-cursors'
   Plug 'mattn/emmet-vim'
-  Plug 'majutsushi/tagbar'
+  "Plug 'majutsushi/tagbar'
   Plug 'mhinz/vim-startify'
   Plug 'mhinz/vim-signify'
   Plug 'morhetz/gruvbox'
