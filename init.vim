@@ -161,6 +161,26 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 let g:airline#extensions#tabline#enabled = 1
 
+let g:coc_global_extensions = [
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-tsserver',
+  \ 'coc-python',
+  \ 'coc-eslint',
+  \ 'coc-json',
+  \ 'coc-yaml',
+  \ 'coc-sh',
+  \ 'coc-java',
+  \ 'coc-jest',
+  \ 'coc-highlight',
+  \ 'coc-snippets',
+  \ 'coc-docker',
+  \ 'coc-svg',
+  \ 'coc-lists',
+  \ 'coc-diagnostic',
+  \ 'coc-angular',
+  \ 'coc-vetur']
+
 "NerdComment
 
 "Majutsushi tagBar
@@ -193,8 +213,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-"let g:syntastic_typescript_tslint_args = "--fix"
 
 let g:syntastic_typescript_checkers = ['tslint']
 let g:syntastic_javascript_checkers = ['eslint']
