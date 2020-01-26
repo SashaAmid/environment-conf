@@ -1,5 +1,5 @@
 call plug#begin('~/.local/share/nvim/plugged')
-  Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+  Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 	Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'easymotion/vim-easymotion'
   Plug 'jiangmiao/auto-pairs'
@@ -19,11 +19,14 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'scrooloose/nerdcommenter'
   "Plug 'terryma/vim-multiple-cursors'
   Plug 'mattn/emmet-vim'
+  Plug 'matze/vim-move' 
   "Plug 'majutsushi/tagbar'
   Plug 'mhinz/vim-startify'
   Plug 'mhinz/vim-signify'
   Plug 'morhetz/gruvbox'
   Plug 'tpope/vim-surround'
+  Plug 'rhysd/git-messenger.vim'
+  Plug 'mbbill/undotree'
 call plug#end()
 
 set cursorline
@@ -216,3 +219,9 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_typescript_checkers = ['tslint']
 let g:syntastic_javascript_checkers = ['eslint']
+
+" Vim-move
+let g:move_key_modifier = 'C'
+
+" mbbill/undotree
+nnoremap <F5> :UndotreeToggle<cr>
