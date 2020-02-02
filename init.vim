@@ -82,6 +82,9 @@ map <C-n> :NERDTreeToggle<CR>
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 
+" airblade/vim-gitgutter
+autocmd BufWritePost * GitGutter
+
 " Vim navigation, buffers
 map gn :bn<cr>
 map gp :bp<cr>
