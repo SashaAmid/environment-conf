@@ -82,9 +82,6 @@ map <C-n> :NERDTreeToggle<CR>
 nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 nnoremap <silent> <Leader>v :NERDTreeFind<CR>
 
-"Vim Gitgutter
-set signcolumn=yes
-
 " Vim navigation, buffers
 map gn :bn<cr>
 map gp :bp<cr>
