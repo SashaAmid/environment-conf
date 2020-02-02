@@ -69,7 +69,7 @@ nnoremap <Leader>h :History<CR>
 nnoremap <Leader>t :BTags<CR>
 nnoremap <Leader>T :Tags<CR>
 nnoremap <Leader>C :Commits<CR>
-nnoremap <Leader>BC :Commits<CR>
+nnoremap <Leader>BC :BCommits<CR>
 nmap <Leader>F :Ag<Space>
 nmap <Leader>' :Marks<CR>
 
