@@ -22,7 +22,6 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'matze/vim-move' 
   "Plug 'majutsushi/tagbar'
   Plug 'mhinz/vim-startify'
-  Plug 'mhinz/vim-signify'
   Plug 'morhetz/gruvbox'
   Plug 'tpope/vim-surround'
   Plug 'rhysd/git-messenger.vim'
