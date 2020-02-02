@@ -55,9 +55,7 @@ syntax on
 "Theme
 colorscheme gruvbox
 set bg=dark
-if (has("termguicolors"))
-  set termguicolors
-endif
+set termguicolors
 
 "Easymotion config
 map <Leader> <Plug>(easymotion-prefix)
