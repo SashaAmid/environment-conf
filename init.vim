@@ -1,4 +1,4 @@
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.config/nvim')
   Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }
 	Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'easymotion/vim-easymotion'
@@ -17,15 +17,13 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
   Plug 'yuttie/comfortable-motion.vim'
   Plug 'scrooloose/nerdcommenter'
-  "Plug 'terryma/vim-multiple-cursors'
   Plug 'mattn/emmet-vim'
   Plug 'matze/vim-move' 
-  "Plug 'majutsushi/tagbar'
   Plug 'mhinz/vim-startify'
-  Plug 'morhetz/gruvbox'
   Plug 'tpope/vim-surround'
   Plug 'rhysd/git-messenger.vim'
   Plug 'mbbill/undotree'
+  Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 set cursorline
@@ -53,15 +51,16 @@ let loaded_matchparen = 1
 syntax on
 
 "Theme
-colorscheme gruvbox
-set bg=dark
-set termguicolors
+set termguicolors     " enable true colors support
+let ayucolor="dark"  " for light version of theme
+colorscheme ayu
+"
 
 "Easymotion config
 map <Leader> <Plug>(easymotion-prefix)
 
 "Fzf search
-silent! nmap <C-P> :GFiles<CR>
+silent! nmap <C-P> :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>h :History<CR>
 nnoremap <Leader>t :BTags<CR>
@@ -184,27 +183,6 @@ let g:coc_global_extensions = [
   \ 'coc-vetur']
 
 "NerdComment
-
-"Majutsushi tagBar
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_type_typescript = {                                                  
-  \ 'ctagsbin' : 'tstags',                                                        
-  \ 'ctagsargs' : '-f-',                                                           
-  \ 'kinds': [                                                                     
-    \ 'e:enums:0:1',                                                               
-    \ 'f:function:0:1',                                                            
-    \ 't:typealias:0:1',                                                           
-    \ 'M:Module:0:1',                                                              
-    \ 'I:import:0:1',                                                              
-    \ 'i:interface:0:1',                                                           
-    \ 'C:class:0:1',                                                               
-    \ 'm:method:0:1',                                                              
-    \ 'p:property:0:1',                                                            
-    \ 'v:variable:0:1',                                                            
-    \ 'c:const:0:1',                                                              
-  \ ],                                                                            
-  \ 'sort' : 0                                                                    
-\ }             
 
 " Syntastic
 set statusline+=%#warningmsg#
