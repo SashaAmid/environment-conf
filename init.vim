@@ -23,7 +23,7 @@ call plug#begin('~/.config/nvim')
   Plug 'tpope/vim-surround'
   Plug 'rhysd/git-messenger.vim'
   Plug 'mbbill/undotree'
-  Plug 'ayu-theme/ayu-vim'
+  Plug 'morhetz/gruvbox'
 call plug#end()
 
 set cursorline
@@ -52,8 +52,8 @@ syntax on
 
 "Theme
 set termguicolors     " enable true colors support
-let ayucolor="dark"  " for light version of theme
-colorscheme ayu
+colorscheme gruvbox
+set background=dark
 "
 
 "Easymotion config
@@ -199,6 +199,3 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 " Vim-move
 let g:move_key_modifier = 'C'
-
-" mbbill/undotree
-nnoremap <F5> :UndotreeToggle<cr>
